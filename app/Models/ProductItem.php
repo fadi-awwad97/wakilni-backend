@@ -1,0 +1,14 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class ProductItem extends Model
+{
+    use HasFactory;
+    protected $fillable = [
+        'serial_number','product_type_id','sold','user_id'
+    ];
+}
