@@ -11,7 +11,6 @@ class ProductController extends Controller
 {
     public function list(Request $request)
     {
-
         $productTypes = ProductType::select(['product_types.*'])
             ->selectSub(function ($query) {
                 $query->from('product_items')
@@ -65,7 +64,6 @@ class ProductController extends Controller
 
     public function update(Request $request)
     {
-
         $product = ProductType::find($request->id);
         if (!$product) {
             return response()->json(['message' => 'Product not found'], 404);
@@ -80,7 +78,6 @@ class ProductController extends Controller
             $image = $request->file('image');
             $imageName = time() . '.' . $image->getClientOriginalExtension();
             $image->move(public_path('images'), $imageName);
-
             $imageUrl = '/images/' . $imageName;
             $product->image_url = $imageUrl;
         }
@@ -181,7 +178,6 @@ class ProductController extends Controller
             $product->save();
             return response()->json(['message' => 'Product added successfully'], 201);
         }
-  
-
+        
     }
 }
