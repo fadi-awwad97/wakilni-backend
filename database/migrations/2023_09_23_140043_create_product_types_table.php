@@ -18,7 +18,7 @@ class CreateProductTypesTable extends Migration
             $table->unsignedBigInteger('user_id'); // Add this line
             $table->string('name'); // Product Type Name
             $table->string('description'); // Number of items in stock
-            $table->string('image_url'); // URL or path to the product image
+            $table->string('image_url')->nullable(); // URL or path to the product image
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

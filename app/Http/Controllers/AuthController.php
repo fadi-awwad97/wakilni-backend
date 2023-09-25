@@ -16,7 +16,7 @@ class AuthController extends Controller
 {
     public function signup(Request $request)
     {
-        
+
         $validator = Validator::make($request->all(), [
             'username' => 'required|string|max:255',
             'email' => 'required|string|email|unique:users|max:255',
@@ -25,12 +25,6 @@ class AuthController extends Controller
 
         if ($validator->fails()) {
             return response()->json(['error' => $validator->errors()], 422);
-        }
-
-        $existingUser = User::where('email', $request->email)->first();
-
-        if ($existingUser) {
-            return response()->json(['error' => 'Email address already in use'], 422);
         }
 
         $user = User::create([
